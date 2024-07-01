@@ -22,7 +22,7 @@ class CryptoWeatherApplicationTests {
 		CryptoData cryptoData = CryptoData.builder()
 				.symbol("BTC")
 				.price(1000d)
-				.time(new Date(""))
+				.time(new Date(1000))
 				.build();
 		cryptoDataService.save(cryptoData);
 		System.out.println(cryptoDataService.findBySymbol("BTC"));

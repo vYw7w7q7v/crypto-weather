@@ -19,16 +19,18 @@ public class CryptoData {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
+    private String name;
+
     private String symbol;
 
     private Double price;
 
     private Date time;
 
-    public CryptoData(String symbol, Double price, Date time) {
+    public CryptoData(String name, String symbol, Double price, Date time) {
+        this.name = name;
         this.symbol = symbol;
         this.price = price;
         this.time = time;
     }
-
 }
