@@ -22,9 +22,9 @@ public class CryptoController {
 
 
     @GetMapping
-    public String getCrypto(@RequestParam String symbol, Model crypto) {
+    public String getCrypto(@RequestParam String symbol, Model model) {
         List<CryptoData> cryptoData = cryptoDataService.findBySymbol(symbol);
-        crypto.addAttribute("cryptoData", cryptoData);
+        model.addAttribute("crypto", cryptoData);
         return "crypto";
     }
 

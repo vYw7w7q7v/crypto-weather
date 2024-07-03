@@ -18,10 +18,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="data : ${cryptoData}">
-        <td th:text="${data.symbol}"></td>
-        <td th:text="${data.price}"></td>
-        <td th:text="${data.date}"></td>
+    <tr th:each="crypto : ${crypto}">
+        <td th:text="${crypto.symbol}"></td>
+        <td th:text="${crypto.price}"></td>
+        <td th:text="${crypto.time}"></td>
     </tr>
     </tbody>
 </table>
