@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Data</title>
+</head>
+<body>
+
+<h1>Crypto Data</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="crypto : ${cryptoData}">
+        <td th:text="${crypto.symbol}"></td>
+        <td th:text="${crypto.price}"></td>
+        <td th:text="${crypto.time}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

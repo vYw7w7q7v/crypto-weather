@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Entity(name = "crypto_data")
 @AllArgsConstructor
@@ -17,7 +16,8 @@ import java.util.UUID;
 public class CryptoData {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    @Column(length = 36)
+    private String id;
 
     private String name;
 
