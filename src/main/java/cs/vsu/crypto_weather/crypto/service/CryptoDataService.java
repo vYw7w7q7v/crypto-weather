@@ -3,7 +3,7 @@ package cs.vsu.crypto_weather.crypto.service;
 import cs.vsu.crypto_weather.crypto.entity.CryptoData;
 import cs.vsu.crypto_weather.crypto.repository.CryptoDataRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,4 +20,8 @@ public class CryptoDataService {
     public List<CryptoData> findBySymbol(String symbol) {
         return cryptoDataRepository.findBySymbol(symbol);
     }
+
+    public List<CryptoData> findAllOrderedByTime() {
+        return cryptoDataRepository.findAll(Sort.by(Sort.Direction.ASC, "time"));
+    };
 }
