@@ -13,5 +13,7 @@ public interface CryptoDataRepository extends CrudRepository<CryptoData, UUID> {
 
     List<CryptoData> findBySymbol(String symbol);
 
+    List<CryptoData> findAllByOrderedByTime();
+
     List<CryptoData> findBySymbolAndTimeBetween(String symbol, Date start, Date end);
 }
