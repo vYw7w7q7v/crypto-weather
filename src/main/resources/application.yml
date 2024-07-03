@@ -3,10 +3,13 @@ spring:
     name: crypto-weather
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
 
   datasource:
     url: jdbc:mysql://localhost:3306/crypto_weather_db
     username: root
-    password: 1234
+    password: testtest
+
+  thymeleaf:
+    cache: false

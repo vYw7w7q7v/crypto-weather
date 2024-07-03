@@ -22,10 +22,17 @@ public class CryptoController {
 
 
     @GetMapping
-    public String getCrypto(@RequestParam String symbol, Model crypto) {
+    public String getCrypto(@RequestParam String symbol, Model model) {
         List<CryptoData> cryptoData = cryptoDataService.findBySymbol(symbol);
-        crypto.addAttribute("cryptoData", cryptoData);
-        return "crypto";
+        model.addAttribute("cryptoData", cryptoData);
+        return "crypto.html";
+    }
+
+    @GetMapping("/cryptos")
+    public String getAll(Model model) {
+        List<CryptoData> cryptoDataList = cryptoDataService.findAllOrderedByTime();
+        model.addAttribute("cryptoData", cryptoDataList);
+        return "crypto.html";
     }
 
 }
