@@ -18,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="crypto : ${crypto}">
+    <tr th:each="crypto : ${cryptoData}">
         <td th:text="${crypto.symbol}"></td>
         <td th:text="${crypto.price}"></td>
         <td th:text="${crypto.time}"></td>
