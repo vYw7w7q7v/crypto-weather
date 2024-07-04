@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/crypto_weather_db
     username: root
-    password: testtest
+    password: ${DB_PASS:testtest}
 
   thymeleaf:
     cache: false

@@ -1,4 +1,4 @@
-package cs.vsu.crypto_weather.crypto.camel;
+package cs.vsu.crypto_weather.weather.camel;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
