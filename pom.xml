@@ -88,8 +88,13 @@
 			<version>4.6.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jsonpath</artifactId>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-jsonpath-starter</artifactId>
+			<version>4.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-jolt-starter</artifactId>
 			<version>4.6.0</version>
 		</dependency>
 		<dependency>
