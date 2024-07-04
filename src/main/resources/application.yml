@@ -1,16 +1,15 @@
 spring:
   application:
-    name: EventEase-backend
-
+    name: crypto-weather
   jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
 
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/crypto_weather_db
     username: root
-    password: root
+    password: testtest
+
+  thymeleaf:
+    cache: false
