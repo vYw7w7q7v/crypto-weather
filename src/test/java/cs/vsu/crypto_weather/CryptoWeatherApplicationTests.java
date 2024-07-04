@@ -27,7 +27,7 @@ class CryptoWeatherApplicationTests {
 
 	@Test
 	void test2() {
-		System.out.println(cryptoDataService.findAllOrderedByTime());
+		System.out.println(cryptoDataService.findAllSortedByTime());
 	}
 
 }

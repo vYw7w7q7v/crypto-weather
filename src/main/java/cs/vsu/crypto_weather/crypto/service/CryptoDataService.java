@@ -13,15 +13,12 @@ import java.util.List;
 public class CryptoDataService {
 
     private final CryptoDataRepository cryptoDataRepository;
-    public void save(CryptoData cryptoData) {
-        cryptoDataRepository.save(cryptoData);
-    }
 
     public List<CryptoData> findBySymbol(String symbol) {
         return cryptoDataRepository.findBySymbol(symbol);
     }
 
-    public List<CryptoData> findAllOrderedByTime() {
+    public List<CryptoData> findAllSortedByTime() {
         return cryptoDataRepository.findAll(Sort.by(Sort.Direction.ASC, "time"));
     };
 }
