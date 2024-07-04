@@ -3,7 +3,7 @@
     "operation": "shift",
     "spec": {
       "location": {
-        "name": "name"
+        "name": "city"
       },
       "current": {
         "last_updated": "time",
