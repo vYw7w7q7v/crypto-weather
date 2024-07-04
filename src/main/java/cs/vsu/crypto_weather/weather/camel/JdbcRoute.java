@@ -7,7 +7,10 @@ import org.springframework.stereotype.Component;
 public class JdbcRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("http://api.weatherapi.com/v1/current.json?key=813eff2b8a174601b28101610240407&q=Moscow&aqi=no")
+        from("timer:mytimer?repeatCount=1")
+                .toD("http://api.weatherapi.com/v1/current.json?" +
+                        "key=813eff2b8a174601b28101610240407&q=Moscow&aqi=no" +
+                        "?httpMethod=GET")
                 .log(body().toString());
 
     }
