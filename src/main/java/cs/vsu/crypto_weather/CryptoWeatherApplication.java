@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CryptoWeatherApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CryptoWeatherApplication.class, args);
+
 	}
 
 }

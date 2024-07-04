@@ -15,7 +15,6 @@ import java.util.Date;
 @Builder
 public class CryptoData {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36)
     private String id;
 
@@ -27,10 +26,4 @@ public class CryptoData {
 
     private Date time;
 
-    public CryptoData(String name, String symbol, Double price, Date time) {
-        this.name = name;
-        this.symbol = symbol;
-        this.price = price;
-        this.time = time;
-    }
 }
