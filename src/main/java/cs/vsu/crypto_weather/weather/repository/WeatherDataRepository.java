@@ -1,5 +1,6 @@
 package cs.vsu.crypto_weather.weather.repository;
 
+import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
