@@ -1,0 +1,14 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "location": {
+        "name": "city"
+      },
+      "current": {
+        "last_updated": "time",
+        "temp_c": "temp"
+      }
+    }
+  }
+]

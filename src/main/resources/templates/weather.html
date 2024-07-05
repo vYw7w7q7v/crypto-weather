@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data</title>
+</head>
+<body>
+
+<h1>Weather Data</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>City</th>
+        <th>temp</th>
+        <th>time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="weather : ${weather}">
+        <td th:text="${weather.city}"></td>
+        <td th:text="${weather.temp}"></td>
+        <td th:text="${weather.time}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
