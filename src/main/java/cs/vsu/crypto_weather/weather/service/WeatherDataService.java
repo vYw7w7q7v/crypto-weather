@@ -19,12 +19,4 @@ public class WeatherDataService {
         weatherDataRepository.save(weatherData);
     }
 
-    @Autowired
-    private WeatherApiRoute weatherApiRoute;
-
-    @PostConstruct
-    public void init() {
-        int l = 1;
-    }
-
 }

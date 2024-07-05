@@ -1,8 +1,6 @@
 package cs.vsu.crypto_weather.weather.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -15,6 +13,7 @@ import java.util.Date;
 @Builder
 public class WeatherData {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36)
     private String id;
 
