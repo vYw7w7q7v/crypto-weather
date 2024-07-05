@@ -6,11 +6,10 @@ import lombok.*;
 import java.util.Date;
 
 @Entity(name = "weather_data")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor@AllArgsConstructor
+@Getter@Setter
 @Builder
+@ToString
 public class WeatherData {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,5 +21,7 @@ public class WeatherData {
     private Double temp;
 
     private Date time;
+
+
 
 }
