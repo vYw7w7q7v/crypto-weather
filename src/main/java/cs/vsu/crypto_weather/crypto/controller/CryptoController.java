@@ -27,7 +27,7 @@ public class CryptoController {
         return "crypto.html";
     }
 
-    @GetMapping("/cryptos")
+    @GetMapping("/all")
     public String getAll(Model model) {
         List<CryptoData> cryptoDataList = cryptoDataService.findAllSortedByTime();
         model.addAttribute("cryptoData", cryptoDataList);
