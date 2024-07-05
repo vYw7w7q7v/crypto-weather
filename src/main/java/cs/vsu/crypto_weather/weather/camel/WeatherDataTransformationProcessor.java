@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -14,10 +15,12 @@ import java.util.Date;
 
 @Component
 public class WeatherDataTransformationProcessor implements Processor {
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @Override
     public void process(Exchange exchange) throws Exception {
         String body = exchange.getIn().getBody(String.class);
-        ObjectMapper objectMapper = new ObjectMapper();
         JsonNode node = objectMapper.readTree(body);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
