@@ -21,7 +21,7 @@ public class WeatherApiRoute extends RouteBuilder {
     @Value("${weather_apikey}")
     private String apikey;
 
-    private String cityList = "Moscow;London";
+    private String cityList = "Moscow;Dubai;London";
 
     private String getConfiguredExternalWeatherApi(String cityName) {
         return String.format(
@@ -40,7 +40,7 @@ public class WeatherApiRoute extends RouteBuilder {
                 .process(exchange -> exchange.getIn().setBody(cityList))
                 .split(body().tokenize(";"))
                     .log(body().toString())
-                .toD(getConfiguredExternalWeatherApi(body().toString()))
+                .toD(getConfiguredExternalWeatherApi("${body}"))
                 .process(transformationProcessor)
                     .log(body().toString())
                 .process(loadProcessor)
