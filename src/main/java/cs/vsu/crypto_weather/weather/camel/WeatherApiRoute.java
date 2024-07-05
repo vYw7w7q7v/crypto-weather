@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WeatherApiRoute extends RouteBuilder {
-    @Autowired
-    private CamelContext camelContext;
 
     @Autowired
     private WeatherDataTransformationProcessor transformationProcessor;
