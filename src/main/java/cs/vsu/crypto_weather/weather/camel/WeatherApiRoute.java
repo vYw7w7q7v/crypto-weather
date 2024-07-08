@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 
+import static java.text.MessageFormat.format;
+
 @Component
 @RequiredArgsConstructor
 public class WeatherApiRoute extends RouteBuilder {
@@ -17,20 +19,20 @@ public class WeatherApiRoute extends RouteBuilder {
     @Value("${weather_apikey}")
     private String apikey;
 
-    private final String timerUri = "timer:weather_data_timer?period=10000&repeatCount=2",
-            weatherApiRouteId = "weather_data_route",
-            cityList = "Moscow;Dubai;London",
-            splitToken = ";",
-            cityNameFormat = "${body}",
-            externalApiPattern = "http://api.weatherapi.com/v1/current.json?key={0}&q={1}&aqi=no?httpMethod=GET";
+    private final String cityList = "Moscow;Dubai;London";
 
     private String getConfiguredExternalWeatherApi() {
-        return MessageFormat.format(externalApiPattern, apikey, cityNameFormat);
+        String cityNameFormat = "${body}";
+        String externalApiPattern = "http://api.weatherapi.com/v1/current.json?key={0}&q={1}&aqi=no?httpMethod=GET";
+        return format(externalApiPattern, apikey, cityNameFormat);
     }
 
     @Override
     public void configure() {
 
+        String splitToken = ";";
+        String timerUri = "timer:weather_data_timer?period=10000&repeatCount=2";
+        String weatherApiRouteId = "weather_data_route";
         from(timerUri)
                 .routeId(weatherApiRouteId)
                 .process(exchange -> exchange.getIn().setBody(cityList))
