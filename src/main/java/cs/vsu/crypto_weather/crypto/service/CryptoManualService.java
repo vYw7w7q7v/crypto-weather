@@ -11,7 +11,7 @@ public class CryptoManualService {
     private final CryptoManualRepository cryptoManualRepository;
 
     public void save(CryptoManual cryptoManual) {
-        if (!cryptoManualRepository.existsBySymbol(cryptoManual.getSymbol())) {
+        if (!cryptoManualRepository.existsBySymbolIgnoreCase(cryptoManual.getSymbol())) {
             cryptoManualRepository.save(cryptoManual);
         }
     }
