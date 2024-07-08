@@ -18,12 +18,14 @@ public class WeatherApiRoute extends RouteBuilder {
     private String apikey;
 
     private final String timerUri = "timer:weather_data_timer?period=10000&repeatCount=2",
-            weatherApiRouteId = "weather_data_route", cityList = "Moscow;Dubai;London",
-            splitToken = ";", cityNamePattern = "${body}",
+            weatherApiRouteId = "weather_data_route",
+            cityList = "Moscow;Dubai;London",
+            splitToken = ";",
+            cityNameFormat = "${body}",
             externalApiPattern = "http://api.weatherapi.com/v1/current.json?key={0}&q={1}&aqi=no?httpMethod=GET";
 
     private String getConfiguredExternalWeatherApi() {
-        return MessageFormat.format(externalApiPattern, apikey, cityNamePattern);
+        return MessageFormat.format(externalApiPattern, apikey, cityNameFormat);
     }
 
     @Override

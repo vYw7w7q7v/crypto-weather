@@ -1,4 +1,4 @@
-package cs.vsu.crypto_weather;
+package cs.vsu.crypto_weather.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.camel.CamelContext;
@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 
 @Configuration
 public class WeatherConfiguration {
-
     @Bean
     public ObjectMapper objectMapper() {
       return new ObjectMapper();
