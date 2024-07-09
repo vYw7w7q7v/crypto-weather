@@ -5,6 +5,7 @@ import cs.vsu.crypto_weather.crypto.repository.CryptoDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,4 +22,9 @@ public class CryptoDataService {
     public List<CryptoData> findAllSortedByTime() {
         return cryptoDataRepository.findAll(Sort.by(Sort.Direction.ASC, "time"));
     };
+
+    @Transactional
+    public void deleteAllBySymbolIgnoreCase(String symbol) {
+        cryptoDataRepository.deleteAllBySymbolIgnoreCase(symbol);
+    }
 }

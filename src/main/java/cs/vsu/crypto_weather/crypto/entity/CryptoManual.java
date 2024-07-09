@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Entity(name = "crypto_manual")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Builder
 public class CryptoManual {

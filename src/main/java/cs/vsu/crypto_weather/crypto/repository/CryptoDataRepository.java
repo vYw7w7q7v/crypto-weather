@@ -17,5 +17,6 @@ public interface CryptoDataRepository extends JpaRepository<CryptoData, UUID> {
 
     List<CryptoData> findAll(Sort sort);
 
+    void deleteAllBySymbolIgnoreCase(String symbol);
     List<CryptoData> findBySymbolAndTimeBetween(String symbol, Date start, Date end);
 }
