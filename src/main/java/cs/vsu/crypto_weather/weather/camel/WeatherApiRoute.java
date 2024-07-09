@@ -5,8 +5,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.text.MessageFormat;
-
 import static java.text.MessageFormat.format;
 
 @Component
@@ -19,7 +17,7 @@ public class WeatherApiRoute extends RouteBuilder {
     @Value("${weather_apikey}")
     private String apikey;
 
-    private final String cityList = "Moscow;Dubai;London";
+    private final String CITY_LIST = "Moscow;Dubai;London";
 
     private String getConfiguredExternalWeatherApi() {
         String cityNameFormat = "${body}";
@@ -35,7 +33,7 @@ public class WeatherApiRoute extends RouteBuilder {
         String weatherApiRouteId = "weather_data_route";
         from(timerUri)
                 .routeId(weatherApiRouteId)
-                .process(exchange -> exchange.getIn().setBody(cityList))
+                .process(exchange -> exchange.getIn().setBody(CITY_LIST))
                 .split(body().tokenize(splitToken))
                     .log(body().toString())
                 .toD(getConfiguredExternalWeatherApi())
