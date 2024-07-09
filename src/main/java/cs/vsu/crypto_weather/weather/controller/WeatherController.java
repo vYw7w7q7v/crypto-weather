@@ -2,6 +2,7 @@ package cs.vsu.crypto_weather.weather.controller;
 
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import cs.vsu.crypto_weather.weather.service.WeatherDataService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/weather")
+@RequiredArgsConstructor
 public class WeatherController {
-
-    @Autowired
-    WeatherDataService weatherDataService;
+    private final WeatherDataService weatherDataService;
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("weather" ,weatherDataService.findAll());

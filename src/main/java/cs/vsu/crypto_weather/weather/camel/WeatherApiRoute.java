@@ -1,46 +1,42 @@
 package cs.vsu.crypto_weather.weather.camel;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
+import lombok.RequiredArgsConstructor;
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import static java.text.MessageFormat.format;
 
 @Component
+@RequiredArgsConstructor
 public class WeatherApiRoute extends RouteBuilder {
 
-    @Autowired
-    private WeatherDataTransformationProcessor transformationProcessor;
-    @Autowired
-    private WeatherDataLoadProcessor loadProcessor;
+    private final WeatherDataTransformationProcessor transformationProcessor;
+    private final WeatherDataLoadProcessor loadProcessor;
 
     @Value("${weather_apikey}")
     private String apikey;
 
-    private String cityList = "Moscow;Dubai;London";
+    private final String CITY_LIST = "Moscow;Dubai;London";
 
-    private String getConfiguredExternalWeatherApi(String cityName) {
-        return String.format(
-                "http://api.weatherapi.com/v1/current.json?" +
-                "key=%s" +
-                "&q=%s" +
-                "&aqi=no?httpMethod=GET",
-                apikey, cityName);
+    private String getConfiguredExternalWeatherApi() {
+        String cityNameFormat = "${body}";
+        String externalApiPattern = "http://api.weatherapi.com/v1/current.json?key={0}&q={1}&aqi=no?httpMethod=GET";
+        return format(externalApiPattern, apikey, cityNameFormat);
     }
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
 
-        from("timer:weather_data_timer?period=10000&repeatCount=3")
-                .routeId("weather_data_route")
-                .process(exchange -> exchange.getIn().setBody(cityList))
-                .split(body().tokenize(";"))
+        String splitToken = ";";
+        String timerUri = "timer:weather_data_timer?period=10000&repeatCount=2";
+        String weatherApiRouteId = "weather_data_route";
+        from(timerUri)
+                .routeId(weatherApiRouteId)
+                .process(exchange -> exchange.getIn().setBody(CITY_LIST))
+                .split(body().tokenize(splitToken))
                     .log(body().toString())
-                .toD(getConfiguredExternalWeatherApi("${body}"))
+                .toD(getConfiguredExternalWeatherApi())
                 .process(transformationProcessor)
                     .log(body().toString())
                 .process(loadProcessor)
