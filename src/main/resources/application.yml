@@ -2,6 +2,8 @@ spring:
   application:
     name: crypto-weather
   kafka:
+    producer:
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
     bootstrap-servers: localhost:29092
     consumer:
       group-id: weather_group

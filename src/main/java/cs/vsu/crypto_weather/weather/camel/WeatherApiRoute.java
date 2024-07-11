@@ -13,6 +13,7 @@ public class WeatherApiRoute extends RouteBuilder {
 
     private final WeatherDataTransformationProcessor transformationProcessor;
     private final WeatherDataLoadProcessor loadProcessor;
+    private final SendWeatherDataToKafkaProcessor sendWeatherDataToKafkaProcessor;
 
     @Value("${weather_apikey}")
     private String apikey;
@@ -40,6 +41,8 @@ public class WeatherApiRoute extends RouteBuilder {
                 .process(transformationProcessor)
                     .log(body().toString())
                 .process(loadProcessor)
+                    .log(body().toString())
+                .process(sendWeatherDataToKafkaProcessor)
                     .log(body().toString());
 
     }
