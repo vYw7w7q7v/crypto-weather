@@ -47,19 +47,20 @@ public class WeatherApiRoute extends RouteBuilder {
                 .routeId(weatherApiRouteId)
                 .process(exchange -> exchange.getIn().setBody(CITY_LIST))
                 .split(body().tokenize(splitToken))
-                    .log(LoggingLevel.DEBUG, format(requestWeatherDataLogMessage, body()))
+                    .log(format(requestWeatherDataLogMessage, body()))
                 .toD(getConfiguredExternalWeatherApi())
-                    .log(LoggingLevel.DEBUG, receiveWeatherDataLogMessage)
+                    .log(receiveWeatherDataLogMessage)
                 .process(transformationProcessor)
-                    .log(LoggingLevel.DEBUG, format(transformWeatherDataLogMessage, bodyAs(WeatherData.class)))
+                    .log(format(transformWeatherDataLogMessage, bodyAs(WeatherData.class)))
                 .doTry()
                     .process(weatherDataLoadProcessor)
-                    .log(LoggingLevel.DEBUG, loadToDBWeatherDataLogMessage)
-                .doCatch(RuntimeException.class)
-                    .log(LoggingLevel.DEBUG, loadToDBErrorWeatherDataLogMessage)
+                    .log(loadToDBWeatherDataLogMessage)
                 .endDoTry()
+                .doCatch(RuntimeException.class)
+                    .log(loadToDBErrorWeatherDataLogMessage)
+                .doFinally()
                 .process(sendWeatherDataToKafkaProcessor)
-                    .log(LoggingLevel.DEBUG, sentToKafkaWeatherDataLogMessage);
+                    .log(sentToKafkaWeatherDataLogMessage);
 
     }
 }
