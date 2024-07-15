@@ -17,7 +17,6 @@ public class SendWeatherDataToKafkaProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         var weatherData = exchange.getIn().getBody(WeatherData.class);
-
         kafkaSender.sendWeatherData(weatherData);
     }
 }

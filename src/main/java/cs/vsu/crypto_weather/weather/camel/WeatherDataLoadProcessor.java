@@ -8,14 +8,16 @@ import org.apache.camel.Processor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.MessageFormat;
+
 @Component
 @RequiredArgsConstructor
 public class WeatherDataLoadProcessor implements Processor {
     private final WeatherDataService weatherDataService;
     @Override
-    public void process(Exchange exchange) throws Exception {
+    public void process(Exchange exchange) throws RuntimeException {
         var weatherData = exchange.getIn().getBody(WeatherData.class);
         weatherDataService.save(weatherData);
-        //exchange.getIn().setBody(String.format("weather data %s loaded!", weatherData.toString()));
+        //exchange.getIn().setBody(MessageFormat.format("weather data loaded! {0}", weatherData));
     }
 }
