@@ -35,6 +35,7 @@ public class CryptoManualController {
                 .build();
         cryptoManualService.save(cryptoManual);
     }
+
     @PostMapping()
     public String delete(@RequestParam String symbol, Model model) {
         cryptoManualService.deleteBySymbolIgnoreCase(symbol);

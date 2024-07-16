@@ -3,19 +3,19 @@ spring:
     name: crypto-weather
   kafka:
     producer:
-      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      key-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
     bootstrap-servers: localhost:29092
     consumer:
       group-id: weather_group
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: false
 
   datasource:
     url: jdbc:mysql://localhost:3306/crypto_weather_db
     username: root
-    password: ${DB_PASS:1234}
+    password: ${DB_PASS:testtest}
 
   thymeleaf:
     cache: false

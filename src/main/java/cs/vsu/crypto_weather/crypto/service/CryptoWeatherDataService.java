@@ -16,7 +16,7 @@ public class CryptoWeatherDataService {
 
     public CryptoWeatherDataDTO getCurrentCryptoWeather(String cryptoSymbol) {
 
-        var cryptoManual = cryptoManualService.findBySymbol(cryptoSymbol).getFirst();
+        var cryptoManual = cryptoManualService.findBySymbol(cryptoSymbol).get(0);
         var weatherData = weatherDataService.findFirstByCityOrderByTimeDesc(
                 cryptoManual.getCityName()
         );

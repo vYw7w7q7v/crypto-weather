@@ -25,7 +25,7 @@ public class SendWeatherDataToKafkaProcessor implements Processor {
         if (cryptoManual.isEmpty()) return;
 
         var cryptoWeatherDataDTO = cryptoWeatherDataService.getCurrentCryptoWeather(
-                cryptoManual.getFirst().getSymbol()
+                cryptoManual.get(0).getSymbol()
         );
         exchange.getIn().setBody(cryptoWeatherDataDTO, CryptoWeatherDataDTO.class);
         kafkaSender.sendCryptoWeatherData(cryptoWeatherDataDTO);
