@@ -15,8 +15,8 @@ public class CryptoDataService {
 
     private final CryptoDataRepository cryptoDataRepository;
 
-    public List<CryptoData> findBySymbol(String symbol) {
-        return cryptoDataRepository.findBySymbol(symbol);
+    public CryptoData findFirstBySymbol(String symbol) {
+        return cryptoDataRepository.findFirstBySymbol(symbol);
     }
 
     public List<CryptoData> findAllSortedByTime() {
@@ -26,5 +26,9 @@ public class CryptoDataService {
     @Transactional
     public void deleteAllBySymbolIgnoreCase(String symbol) {
         cryptoDataRepository.deleteAllBySymbolIgnoreCase(symbol);
+    }
+
+    public List<CryptoData> findBySymbol(String symbol) {
+        return cryptoDataRepository.findBySymbol(symbol);
     }
 }

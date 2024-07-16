@@ -18,5 +18,12 @@ public class WeatherDataService {
     public List<WeatherData> findAll() {
         return weatherDataRepository.findAll();
     }
+    public WeatherData findFirstOrderByTimeDesc() {
+        return weatherDataRepository.findFirstByOrderByTimeDesc();
+        //StringSerializer
+    }
 
+    public WeatherData findFirstByCityOrderByTimeDesc(String cityName) {
+        return weatherDataRepository.findFirstByCityOrderByTimeDesc(cityName);
+    }
 }

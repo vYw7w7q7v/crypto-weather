@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CryptoManualService {
@@ -22,4 +24,15 @@ public class CryptoManualService {
         cryptoManualRepository.deleteBySymbolIgnoreCase(symbol);
     }
 
+    public List<CryptoManual> findBySymbol(String cryptoSymbol) {
+        return cryptoManualRepository.findBySymbol(cryptoSymbol);
+    }
+
+    public List<CryptoManual> findAll() {
+        return cryptoManualRepository.findAll();
+    }
+
+    public List<CryptoManual> findByCityName(String city) {
+        return cryptoManualRepository.findByCityName(city);
+    }
 }

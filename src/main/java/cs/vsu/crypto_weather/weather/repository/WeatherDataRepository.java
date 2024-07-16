@@ -9,4 +9,7 @@ import java.util.UUID;
 
 public interface WeatherDataRepository extends JpaRepository<WeatherData, UUID> {
     List<WeatherData> findAll(Sort sort);
+    WeatherData findFirstByOrderByTimeDesc();
+
+    WeatherData findFirstByCityOrderByTimeDesc(String cityName);
 }

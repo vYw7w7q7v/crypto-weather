@@ -17,7 +17,9 @@ public class CryptoManual {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36)
     private String id;
-
     private String symbol;
 
+    private String cityName;
+    private Double buyBorder;
+    private Double sellBorder;
 }

@@ -15,13 +15,8 @@ public class WeatherData {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36)
     private String id;
-
     private String city;
-
     private Double temp;
-
     private Date time;
-
-
 
 }

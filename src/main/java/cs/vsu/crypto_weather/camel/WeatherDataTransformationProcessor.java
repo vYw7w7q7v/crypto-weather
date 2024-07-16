@@ -1,4 +1,4 @@
-package cs.vsu.crypto_weather.weather.camel;
+package cs.vsu.crypto_weather.camel;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

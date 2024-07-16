@@ -17,13 +17,9 @@ public class CryptoData {
     @Id
     @Column(length = 36)
     private String id;
-
     private String name;
-
     private String symbol;
-
     private Double price;
-
     private Date time;
 
 }
