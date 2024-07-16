@@ -18,7 +18,8 @@ public class CryptoManual {
     @Column(length = 36)
     private String id;
     private String symbol;
+
+    private String cityName;
     private Double buyBorder;
     private Double sellBorder;
-
 }

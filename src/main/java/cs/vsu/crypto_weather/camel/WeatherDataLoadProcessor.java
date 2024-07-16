@@ -1,4 +1,4 @@
-package cs.vsu.crypto_weather.weather.camel;
+package cs.vsu.crypto_weather.camel;
 
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import cs.vsu.crypto_weather.weather.service.WeatherDataService;

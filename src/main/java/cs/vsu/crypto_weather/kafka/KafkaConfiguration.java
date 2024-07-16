@@ -1,5 +1,6 @@
-package cs.vsu.crypto_weather.weather.kafka;
+package cs.vsu.crypto_weather.kafka;
 
+import cs.vsu.crypto_weather.crypto.dto.CryptoWeatherDataDTO;
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -19,7 +20,7 @@ import java.util.Properties;
 public class KafkaConfiguration {
 
     @Bean
-    private static KafkaProducer<String, WeatherData> kafkaProducer() {
+    private static KafkaProducer<String, CryptoWeatherDataDTO> kafkaProducer() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092");
 //        props.put(ProducerConfig.CLIENT_ID_CONFIG, CONSUMER_APP_ID);

@@ -3,7 +3,6 @@ package cs.vsu.crypto_weather.crypto.repository;
 import cs.vsu.crypto_weather.crypto.entity.CryptoData;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -19,4 +18,7 @@ public interface CryptoDataRepository extends JpaRepository<CryptoData, UUID> {
 
     void deleteAllBySymbolIgnoreCase(String symbol);
     List<CryptoData> findBySymbolAndTimeBetween(String symbol, Date start, Date end);
+
+    CryptoData findFirstBySymbol(String symbol);
+
 }

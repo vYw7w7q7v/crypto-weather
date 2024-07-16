@@ -3,7 +3,6 @@ package cs.vsu.crypto_weather.weather.service;
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import cs.vsu.crypto_weather.weather.repository.WeatherDataRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +18,12 @@ public class WeatherDataService {
     public List<WeatherData> findAll() {
         return weatherDataRepository.findAll();
     }
-    public WeatherData findFirstByOrderByTimeDesc() {
+    public WeatherData findFirstOrderByTimeDesc() {
         return weatherDataRepository.findFirstByOrderByTimeDesc();
         //StringSerializer
     }
 
+    public WeatherData findFirstByCityOrderByTimeDesc(String cityName) {
+        return weatherDataRepository.findFirstByCityOrderByTimeDesc(cityName);
+    }
 }

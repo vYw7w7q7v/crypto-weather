@@ -4,11 +4,15 @@ import cs.vsu.crypto_weather.crypto.entity.CryptoManual;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 public interface CryptoManualRepository extends JpaRepository<CryptoManual, UUID> {
     boolean existsBySymbolIgnoreCase(String symbol);
     void deleteBySymbolIgnoreCase(String symbol);
+    List<CryptoManual> findBySymbol(String symbol);
+
+    List<CryptoManual> findByCityName(String cityName);
 
 }

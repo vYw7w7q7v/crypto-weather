@@ -1,8 +1,7 @@
-package cs.vsu.crypto_weather.weather.camel;
+package cs.vsu.crypto_weather.camel;
 
 import cs.vsu.crypto_weather.weather.entity.WeatherData;
 import lombok.RequiredArgsConstructor;
-import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ public class WeatherApiRoute extends RouteBuilder {
 
     private final WeatherDataTransformationProcessor transformationProcessor;
     private final WeatherDataLoadProcessor weatherDataLoadProcessor;
-    private final SendWeatherDataToKafkaProcessor sendWeatherDataToKafkaProcessor;
+    private final SendWeatherDataToKafkaProcessor sendCryptoWeatherDataToKafkaProcessor;
 
     @Value("${weather_apikey}")
     private String apikey;
@@ -51,7 +50,7 @@ public class WeatherApiRoute extends RouteBuilder {
                 .toD(getConfiguredExternalWeatherApi())
                     .log(receiveWeatherDataLogMessage)
                 .process(transformationProcessor)
-                    .log(format(transformWeatherDataLogMessage, bodyAs(WeatherData.class)))
+                    .log(format(transformWeatherDataLogMessage, body()))
                 .doTry()
                     .process(weatherDataLoadProcessor)
                     .log(loadToDBWeatherDataLogMessage)
@@ -59,7 +58,7 @@ public class WeatherApiRoute extends RouteBuilder {
                 .doCatch(RuntimeException.class)
                     .log(loadToDBErrorWeatherDataLogMessage)
                 .doFinally()
-                .process(sendWeatherDataToKafkaProcessor)
+                .process(sendCryptoWeatherDataToKafkaProcessor)
                     .log(sentToKafkaWeatherDataLogMessage);
 
     }
